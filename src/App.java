@@ -10,12 +10,12 @@ public class App {
     public static void main(String[] args) {
         try {
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://graph.facebook.com/v16.0/130981449897087/messages"))
+                    .uri(new URI("https://graph.facebook.com/v16.0/<YOUR PHONE NUMBER ID>/messages"))
                     .header("Authorization",
-                            "Bearer EAACOxsvJOkQBAE6DfuU3HWEOU5Dp3ksMTQzJZAXcFc4mKZAcEeQqlADAp3dSfFYPfj8PZBEQYzy71E2VeGtsGLBcxhs3rQ7drX8TvJoxn2sD0oXUvcYL3sGaoZBL3QSZCRXt8AklFfiZAHZCXI8J4T9r8dUcNGGim86HmLZBbyOylpEU6mvaDsZANhE7hQdVEsqt71FmhqEfqbwZDZD")
+                            "Bearer <YOUR BEARER TOKEN>")
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(
-                            "{ \"messaging_product\": \"whatsapp\", \"recipient_type\": \"individual\", \"to\": \"919025718669\", \"type\": \"template\", \"template\": { \"name\": \"hello_world\", \"language\": { \"code\": \"en_US\" } } }"))
+                            "{ \"messaging_product\": \"whatsapp\", \"recipient_type\": \"individual\", \"to\": \"<TARGET PHONE NUMBER>\", \"type\": \"template\", \"template\": { \"name\": \"hello_world\", \"language\": { \"code\": \"en_US\" } } }"))
                     .build();
             HttpClient http = HttpClient.newHttpClient();
             HttpResponse<String> response = http.send(request, BodyHandlers.ofString());
